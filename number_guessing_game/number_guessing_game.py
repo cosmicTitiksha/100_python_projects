@@ -2,7 +2,6 @@
 import random
 
 generated_num = random.randint(1,100) # Any number in inclusive range of 1 to 100
-print(f"Generated number : {generated_num}")
 count = 0
 
 query = True
