@@ -16,7 +16,7 @@ def countdown_timer():
     print(f"Countdown starting from {total_seconds} seconds.")
     time.sleep(1)
 
-    while total_seconds > 0:
+    while total_seconds >= 0:
         # Clear the console for a clean update (Windows uses 'cls', Unix/macOS uses 'clear')
         os.system('cls' if os.name == 'nt' else 'clear')
         minutes = total_seconds // 60
