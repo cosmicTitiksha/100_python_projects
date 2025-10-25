@@ -1,1 +1,4 @@
-make CLI based To-Do list in python
+Do the dishes.
+read DSA with C and C++
+Revise To-Do list project again.
+Visit park today.
