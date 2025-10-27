@@ -1,61 +1,66 @@
 # This program is a Simple calculator, which can perform Addition, Subtraction, Multiplication, Division, remainder, exponent.
+# | **Beginner** | **Console/CLI** | **1. Simple Calculator** | Basic operators, functions, user input. |
+# (+, -, *, /, **, %)
 
 
-# Functions for various calculations
-def addition(num1, num2):
-    return num1 + num2
+# Functions for various operations
+def add(num1, num2):
+    add = num1 + num2
+    return add
 
-def subtraction(num1, num2):
-    return num1 - num2
+def sub(num1, num2):
+    sub = num1 - num2
+    return sub
 
-def multiplication(num1, num2):
-    return num1 * num2
+def mul(num1, num2):
+    mul = num1 * num2
+    return mul
 
-def division(num1, num2):
-    if num2 != 0:
-        return num1 / num2
-    
-def remainder(num1, num2):
-    return num1 % num2
-
-def exponent(num1, num2):
-    return pow(num1, num2)
-
-
-# Using while loop, since we don't have any fixed number of iterations.
-op = True
-while op:
-
-    num1 = float(input("Enter the first number : "))
-    num2 = float(input("Enter the second number : "))
-
-    operation = input("Enter the operation, you want to perform(+, -, *, /, **, %) :")
-
-    if operation == '+':
-        print(addition(num1, num2))
-
-    elif operation == '-':
-        print(subtraction(num1, num2))
-
-    elif operation == '*':
-        print(multiplication(num1, num2))
-
-    elif operation == '/':
-        print(division(num1, num2))
-
-    elif operation == '%':
-        print(remainder(num1, num2))
-
-    elif operation == "**":
-        print(exponent(num1, num2))
-
+def div(num1, num2):
+    if num2 == 0:
+        return "Invalid, num2 can not be zero!"
     else:
-        print("Invalid operator")
+        div = num1 / num2
+        return div
+    
+def exp(num1, num2):
+    exp = num1 ** num2
+    return exp
 
-    more = input("Wanna Play again? (yes/no) : ")
-    # making op = False to exit the loop, if user des not want to do any more calculations
-    if more.lower() == 'no':
-        op = False
+def rem(num1, num2):
+    rem = num1 % num2
+    return rem
 
+# Running the loop for letting user perform different operations and calculations
+while True:
+    num1 = float(input("Enter first number : "))
+    num2 = float(input("Enter second number : "))
+    operation = input("Enter the operation you want to perform(+, -, *, /, **, %) : ")
+    if operation == '+':
+        print(add(num1, num2))
+    elif operation == '-':
+        print(sub(num1, num2))
+    elif operation == '*':
+        print(mul(num1, num2))
+    elif operation == '/':
+        print(div(num1, num2))
+    elif operation == '**':
+        print(exp(num1, num2))
+    elif operation == '%':
+        print("Please enter both numbers as 'integers' only for correct results as modulo operation is for integers only. ")
+        print(rem(int(num1), int(num2)))
+    else:
+        print("Invalid Operation, you can only +,-,*,/,**,%. ")
 
+    # Asking the user, whether they have more calculations to perform
+    query = input("Have more calculations to perform (y/n): ")
+    if query.lower() == 'y':
+        continue
+    elif query.lower() == 'n':
+        break
+    else:
+        print("Invalid entry...write either 'y' or 'n'.")
+        continue
 
+# Out of the loop
+print("Thanks 👋 for using Simple Calculator...See you again, Soon ✌️")
