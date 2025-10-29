@@ -12,7 +12,9 @@ def load_data():
     
 def view_data(iris):
     for data in iris:
-        print(data.split(","))
+        data = data.split(',')
+        data = '|'.join(data)
+        print(data)
 
 iris = load_data()
 view_data(iris)
