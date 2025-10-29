@@ -13,4 +13,4 @@ while query:
         query = False
     else:
         print("Invalid Entry")
-        query = False
+        query = True
