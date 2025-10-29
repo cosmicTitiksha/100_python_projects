@@ -1,53 +1,63 @@
 # The code is for rock-paper-scissors game with computer. Enjoy!!!!!!!!!'
 # Importing random library, to randomly let computer choose its choice
+
 import random
-# function to get respective player and computer's choice
-def make_choices():
-    player_choice = input("Enter your choice ('rock','paper','scissors') : ")
+# function to get choices of both the player and the computer
+def get_choices():
     options = ['rock', 'paper', 'scissors']
+    # if choice entered by user is not in 'options', user will be asked to re-enter
+    while True:
+        player_choice = input("Enter your choice (rock/paper/scissors) : ").lower()
+        if player_choice in options:
+            break
+        else:
+            print("Invalid choice. Please enter 'rock', 'paper', or 'scissors'.")
+            continue
+    
     computer_choice = random.choice(options)
-    choice = {"player" : player_choice , "computer" : computer_choice}
-    return choice
-# logic to check if the player won, lose or the game is a Tie!!!!!
+    choices = {'player' : player_choice, 'computer' : computer_choice}
+    return choices
+
+# function to check the score
 def check_win(player, computer):
     score = 0
     if player == computer:
-        output = "It's a tie!!!"
+        result = 'Tie'
     elif player == 'rock':
         if computer == 'paper':
-            output = "You lose."
+            result = 'Lose'
+            score -= 1
         else:
-            output = "You won!"
+            result = 'Win'
             score += 1
     elif player == 'paper':
         if computer == 'rock':
-            output = 'You won!'
+            result = 'Win'
             score += 1
         else:
-            output = 'You lose'
+            result = 'Lose'
+            score -= 1
     elif player == 'scissors':
         if computer == 'rock':
-            output = "You lose"
+            result = 'Lose'
+            score -= 1
         else:
-            output = 'You won!'
+            result = 'Win'
             score += 1
-    else:
-        output = "Enter a valid item!"
-    print(f"You entered {player}, computer chose {computer}. {output}")
-    # Returning score...and updating in next part to calculate overall score
+
+    print(f"You chose {player}, computer chose {computer}. It's a {result}. ")
+    # score is returned so as 'score' can be displayed in later stage
     return score
 
-print("Rock - Paper - Scissors".center(70, "-"))
-# Initial score as a '0'
+
+# program starts from here-------------------------------------
+query = int(input("How many times do you want to play ? : "))
 score = 0
-output = ""
-# Letting the user decide, how many times, it wants to play against computer
-times = int(input("How many times do you want to play against computer? : "))
-for i in range(times):
-    choice = make_choices()
-    # Updating score, to let user see its final score later
-    score += check_win(choice["player"], choice["computer"])
+# loop to let user play as many times it wants
+for i in range(query):
+    choices = get_choices()
+    # score is added to global 'score' variable everytime loop runs
+    score += check_win(choices['player'], choices['computer'])
 
-# Displaying final score out of the games player decided tohave, against the computer
-print(f"You scored {score}/{times}")
-
+# final score displayed
+print(f"Your score : {score}/{query}")
