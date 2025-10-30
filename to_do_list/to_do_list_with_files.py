@@ -39,7 +39,7 @@ tasks = load_tasks()
 # Loop to keep the operation going...until exiting the loop
 while True:
     # Asking the user, which oeration to perform
-    query = input("What operation do you to perform, (add/view/delete/exit) tasks ? : ")
+    query = input("What operation do you want to perform, (add/view/delete/exit) tasks ? : ")
     # logic if user entered 'add'
     if query.lower() == 'add':
         tasks.append(create_task())
